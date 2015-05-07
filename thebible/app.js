@@ -18,6 +18,7 @@ https.createServer(options, function(req, res) {
 
     function sendResponse() {
         myResponse = JSON.stringify(echoResponse);
+        console.log(myResponse, {depth:5});
         res.setHeader('Content-Length', myResponse.length);
         res.writeHead(200);
         res.end(myResponse);
@@ -35,15 +36,11 @@ https.createServer(options, function(req, res) {
             echoResponse.response.outputSpeech = {};
 
             echoResponse.response.outputSpeech.type = "PlainText"
-            echoResponse.response.outputSpeech.text = "Say something like Genesis one one."
             echoResponse.response.outputSpeech.text = "ok"
             echoResponse.response.shouldEndSession = "false";
             theRequest = JSON.parse(jsonString);
-            //console.log(theRequest.request, {depth:5});
             console.dir(theRequest, {depth: 5});
             if (theRequest.request.type == 'IntentRequest') {
-                //choice = theRequest.request.intent.slots.Choice.value;
-                //echoResponse.response.outputSpeech.text = "I heard you say " + choice;
                 book = theRequest.request.intent.slots.book.value;
                 chapter = theRequest.request.intent.slots.chapter.value;
                 verse = theRequest.request.intent.slots.verse.value;
@@ -58,15 +55,15 @@ https.createServer(options, function(req, res) {
                 echoResponse.response.shouldEndSession = "false";
                 EnBible.getVerse(verseString, function(err, data) {
                     console.log(err || data[0].text);
-                    echoResponse.response.outputSpeech.text = data[0].text;
-                    echoResponse.response.card.content = data[0].text;
+                    text = data[0].text;
+                    text = text.replace(/\W/g, ' '); //remove special characters
+                    echoResponse.response.outputSpeech.text = text;
+                    echoResponse.response.card.content = text;
                     sendResponse();
 
                 });
             } else
                 sendResponse();
-
-
         });
     } else {
         sendResponse();
