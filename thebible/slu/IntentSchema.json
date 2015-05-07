@@ -1,0 +1,25 @@
+{
+  "intents": [
+    {
+      "intent": "ReadIntent",
+      "slots": [
+        {
+          "name": "book",
+          "type": "LITERAL"
+        },
+        {
+          "name": "chapter",
+          "type": "NUMBER"
+        },
+        {
+          "name": "verse",
+          "type": "NUMBER"
+        }
+      ]
+    },
+    {
+      "intent": "RandomIntent",
+      "slots": []
+    }
+  ]
+}
