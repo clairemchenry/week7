@@ -8,12 +8,19 @@ var options = {
 
 
 https.createServer(options, function(req, res) {
+    function sendResponse() {
+        myResponse = JSON.stringify(echoResponse);
+        res.setHeader('Content-Length', myResponse.length);
+        res.writeHead(200);
+        res.end(myResponse);
+    }
     if (req.method == 'POST') {
         var jsonString = '';
         req.on('data', function(data) {
             jsonString += data;
         });
         req.on('end', function() {
+            console.dir(jsonString, {depth: 5});
             echoResponse = {};
             echoResponse.version = "1.0";
             echoResponse.response = {};
@@ -23,9 +30,7 @@ https.createServer(options, function(req, res) {
             echoResponse.response.outputSpeech.text = "Say something"
             echoResponse.response.shouldEndSession = "false";
             theRequest = JSON.parse(jsonString);
-            //console.log(theRequest.request.type);
             if (theRequest.request.type == 'IntentRequest') {
-
                 choice = theRequest.request.intent.slots.Choice.value;
                 echoResponse.response.outputSpeech.text = "I heard the choice " + choice;
                 echoResponse.response.card = {};
@@ -36,17 +41,11 @@ https.createServer(options, function(req, res) {
                 echoResponse.sessionAttributes = {};
                 echoResponse.response.shouldEndSession = "false";
             }
-            myResponse = JSON.stringify(echoResponse);
-            res.setHeader('Content-Length', myResponse.length);
-            res.writeHead(200);
-            res.end(myResponse);
-            //console.dir(echoResponse, {depth: 5});
+            sendResponse();
+            console.dir(echoResponse, {depth: 5});
 
         });
     } else {
-        myResponse = JSON.stringify(echoResponse);
-        res.setHeader('Content-Length', myResponse.length);
-        res.writeHead(200);
-        res.end(myResponse);
+        sendResponse();
     }
 }).listen(3030); //Put number in the 3000 range for testing and 443 for production
