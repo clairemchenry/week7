@@ -1,0 +1,3 @@
+WordIntent define {asymptote|Word}
+WordIntent select {asymptote|Word}
+WordIntent select {Gary Anderson|Word}

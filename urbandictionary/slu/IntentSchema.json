@@ -1,0 +1,13 @@
+{
+  "intents": [
+    {
+      "intent": "WordIntent",
+      "slots": [
+        {
+          "name": "Word",
+          "type": "LITERAL"
+        }
+      ]
+    }
+  ]
+}
