@@ -1,0 +1,12 @@
+//Sample
+
+HelloIntent  say hello
+HelloUserIntent  say hello to {steve|UserName}
+HelloUserIntent  say hello to {samantha powell|UserName}
+
+
+//For this App
+choice select {truth|Choice}
+choice select {dare|Choice}
+choice {truth|Choice}
+choice {dare|Choice}
