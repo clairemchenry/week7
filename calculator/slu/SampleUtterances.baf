@@ -1,0 +1,14 @@
+ExperimentIntent {zero|myNumber}
+ExperimentIntent {one|myNumber}
+ExperimentIntent {two|myNumber}
+ExperimentIntent {three|myNumber}
+ExperimentIntent {four|myNumber}
+ExperimentIntent {five|myNumber}
+ExperimentIntent {six|myNumber}
+ExperimentIntent {seven|myNumber}
+ExperimentIntent {eight|myNumber}
+ExperimentIntent {nine|myNumber}
+ExperimentIntent {one million|myNumber}
+ExperimentIntent {one hundred twenty one|myNumber}
+ExperimentIntent {one hundred thirty|myNumber}
+ExperimentIntent {one hundred and eighty five thousand two hundred and six|myNumber}
