@@ -1,0 +1,34 @@
+//Samp;le
+{
+  "intents": [
+    {
+      "intent": "HelloIntent",
+      "slots": []
+    },
+    {
+      "intent": "HelloUserIntent",
+      "slots": [
+        {
+          "name": "UserName",
+          "type": "LITERAL"
+        }
+      ]
+    }
+  ]
+}
+
+//for this app
+
+{
+  "intents": [
+    {
+      "intent": "choice",
+      "slots": [
+        {
+          "name": "Choice",
+          "type": "LITERAL"
+        }
+      ]
+    }
+  ]
+}
