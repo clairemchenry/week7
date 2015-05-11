@@ -1,0 +1,17 @@
+{
+  "intents": [
+    {
+      "intent": "ExperimentIntent",
+      "slots": [
+        {
+          "name": "myNumber",
+          "type": "NUMBER"
+        }
+      ]
+    },
+    {
+      "intent": "OtherIntent",
+      "slots": []
+    }
+  ]
+}
